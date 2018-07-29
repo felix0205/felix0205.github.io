@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="just ok ......"><title>mysql 查询性能优化一 | matrix</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">mysql 查询性能优化一</h1><a id="logo" href="/.">matrix</a><p class="description">Simplicity is the ultimate form of sophistication</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/history/"><i class="fa fa-book"> 历史</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">mysql 查询性能优化一</h1><div class="post-meta">Aug 1, 2017</div><div class="post-content"><h3 id="1-为什么查询速度会慢"><a href="#1-为什么查询速度会慢" class="headerlink" title="1. 为什么查询速度会慢"></a>1. 为什么查询速度会慢</h3><p>真正重要的是响应时间。</p>
+<ul>
+<li>响应时间：响应时间只是表面上的一个值；但，响应时间仍然是最重要的指标。（是服务时间和排队）</li>
+<li>服务时间：指数据库处理这个查询真正花了多长时间。</li>
+<li>排队时间：服务器因为等待某些资源而没有真正执行查询的时间（等待IO和锁等待）</li>
+</ul>
+<p>查询的生命周期大致可以按照顺序来看：从客户端，到服务器，然后在服务器上进行解析，生成执行计划，执行，并返回结果给客户端。<br>在完成这些任务的时候，查询需要在不同的地方花费时间，包括网络，CPU 计算，生成统计信息和执行计划、锁等待（互斥等待）等操作，尤其是向地城存储引擎检索数据的调用，这些调用需要在内存操作、CPU 操作和内存不足时导致的 I/O 操作上消耗时间。</p>
+<h3 id="2-慢查询基础：优化数据访问"><a href="#2-慢查询基础：优化数据访问" class="headerlink" title="2. 慢查询基础：优化数据访问"></a>2. 慢查询基础：优化数据访问</h3><p>查询性能低下最基本的原因是访问的数据太多。<br>对低效查询进行两步分析：</p>
+<ul>
+<li>是否检索大量超过需要的数据。访问太多的行或列</li>
+<li>mysql服务器是否在分析大量超过需要的数据行</li>
+</ul>
+<p>查询大量不需要数据案例：</p>
+<ol>
+<li>查询不需要的记录（最简单有效的解决方案：在查询后使用LIMIT）</li>
+<li>多表关联返回全部列</li>
+<li>总是取出全部的列（慎用 SELECT *）</li>
+<li>重复查询相同的数据</li>
+</ol>
+<p>最简单的衡量查询开销的三个指标（记录在mysql 的慢日志中）：</p>
+<ul>
+<li>响应时间</li>
+<li>扫描的行数</li>
+<li>返回的行数</li>
+</ul>
+<p>扫描的行数和返回的行数</p>
+<ul>
+<li>并不是所有的行的访问代价是相同的。较短的行的访问速度更快，内存中的行也比磁盘中的行的访问速度要快得多。</li>
+<li>理想情况下扫描的行数和返回的行数应该是相同的。扫描的行数对返回的行数比率通常很小，一般在 1:1 和 10:1 之间。</li>
+</ul>
+<p>扫描的行数和访问类型</p>
+<ul>
+<li>在评估查询开销的时候，需要考虑一下从表中找到某一行数据的成本。</li>
+<li>在 EXPLAIN 语句中的 type 列反应了访问类型。访问类型有很多种，从全表扫描到索引扫描、范围扫描、唯一索引查询、常数引用等。</li>
+</ul>
+<p>如果查询没有办法找到合适的访问类型，那么解决的最好办法通常就是增加一个合适的索引。索引让 MySQL 以最高效、扫描行数最少的方式找到需要的记录。</p>
+<p>一般 MySQL 能够使用如下三种方式应用 WHERE 条件，从好到坏以此为：</p>
+<ul>
+<li>在索引中使用 WHERE 条件来过滤不匹配的记录。这是在存储引擎层完成的。</li>
+<li>使用索引覆盖扫描（在 Extra 列中出现了 Using index）来返回记录，直接从索引中过滤掉不需要的记录并返回命中的结果。这是在 MySQL 服务器层完成的，但无须再回表查询记录。</li>
+<li>从数据表中返回数据，然后过滤掉不满足条件的记录（在 Extra 列中出现 Using Where）。这在 MySQL 服务器层完成，MySQL 需要先从数据表读出记录然后过滤。</li>
+</ul>
+<p>查询扫描大量数据但返回少数行，优化方法：</p>
+<ul>
+<li>使用索引覆盖扫描，把所有需要用到的列都放到索引中，这样存储引擎无须回表获取对应行就可以返回结果了。</li>
+<li>改变库表结构。例如使用单独的汇总表。</li>
+<li>重写这个复杂的查询，让 MySQL 优化器能够以更优化的方式执行这个查询。</li>
+</ul>
+<h3 id="3-重构查询的方式"><a href="#3-重构查询的方式" class="headerlink" title="3. 重构查询的方式"></a>3. 重构查询的方式</h3><p>在优化有问题的查询时，目标应该是找到一个更优的方法获取实际需要的结果—​而不一定总是需要从 MySQL 获取一模一样的结果集。</p>
+<p>3.1 一个复杂查询还是多个简单查询<br>设计查询的时候一个需要考虑的重要问题是，是否需要将一个复杂的查询分成多个简单的查询。<br>MySQL 从设计上让连接和断开连接都 很轻量级，在返回一个小的查询结果方面很高效。<br>MySQL 内部每秒能够扫描内存中上百万行数据。<br>在应用设计的时候，如果一个查询能够胜任时还写成多个独立查询是不明智的。</p>
+<p>3.2 切分查询<br>有时候对于一个大查询我们需要“分而治之”，将大查询切分成小查询，每个查询功能完全一样，只完成一小部分，每次只返回一小部分查询结果。例如删除旧的数据。</p>
+<p>3.3 分解关联查询<br>可以对每一个表进行一次单表查询，然后将结果在应用程序中进行关联。<br>用分解关联查询的方式重构查询有如下的优势：</p>
+<ul>
+<li>让缓存的效率更高。</li>
+<li>将查询分解后，执行单个查询可以减少锁的竞争。</li>
+<li>在应用层做关联，可以更容易对数据库进行拆分，更容易做到高性能和可扩展。</li>
+<li>查询本身效率也可能会有所提升。</li>
+<li>可以减少冗余记录的查询。</li>
+<li>这样做相当于在应用中实现了哈希关联，而不是使用 MySQL 的嵌套循环关联。某些场景哈希关联的效率要高很多。</li>
+</ul>
+</div><div class="tags"><a href="/tags/mysql/">mysql</a></div><div class="post-nav"><a class="pre" href="/2017/08/01/mysql-select-optimize2/">mysql 查询性能优化二 查询执行的基础</a><a class="next" href="/2017/07/31/mysql-index-optimize/">mysql 索引二 高性能索引策略</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://neoace.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/kong/" style="font-size: 15px;">kong</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a> <a href="/tags/head-first/" style="font-size: 15px;">head first</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/mysql-select-optimize2/">mysql 查询性能优化二 查询执行的基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/mysql-select-optimize/">mysql 查询性能优化一</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/mysql-index-optimize/">mysql 索引二 高性能索引策略</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/mysql-index/">mysql 索引一 索引原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/mysql-alert-table-column/">mysql alert table column</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/16/Idea-use-gerrit-plugin/">Idea使用gerrit插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/读书学习方法/">读书学习方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/mysql学习(一) —— 数据类型的选择/">mysql学习(一) —— 数据类型的选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/榴莲/">榴莲成长史</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/05/Kong安装配置/">Kong安装配置</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">matrix.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

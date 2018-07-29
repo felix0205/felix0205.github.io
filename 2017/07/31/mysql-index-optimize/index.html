@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="just ok ......"><title>mysql 索引二 高性能索引策略 | matrix</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">mysql 索引二 高性能索引策略</h1><a id="logo" href="/.">matrix</a><p class="description">Simplicity is the ultimate form of sophistication</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/history/"><i class="fa fa-book"> 历史</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">mysql 索引二 高性能索引策略</h1><div class="post-meta">Jul 31, 2017</div><div class="post-content"><h3 id="1-独立的列"><a href="#1-独立的列" class="headerlink" title="1.独立的列"></a>1.独立的列</h3><p>“独立的列”是指索引列不能是表达式的一部分，也不能是函数的参数。<br>应该养成简化 WHERE 条件的习惯，始终将索引列单独放在比较符合的一侧。<br><a id="more"></a></p>
+<h3 id="2-前缀索引和索引选择性"><a href="#2-前缀索引和索引选择性" class="headerlink" title="2.前缀索引和索引选择性"></a>2.前缀索引和索引选择性</h3><p>当索引很长的字符列，会让索引变得大且慢，一个策略是前面提到过的模拟哈希索引。</p>
+<p>通常可以索引开始的部分字符，可以大大节约索引空间，从而提高索引效率。但这样会降低索引的选择性。</p>
+<p>索引的选择性是指，不重复的索引值（也称为基数，cardinality）和数据表的记录总数（#T）的比值，范围从 1/#T 到1之间。索引的选择性越高则查询效率越高，因为选择性高的索引可以让 MySQL 在查找时过滤掉更多的行。唯一索引的选择性是 1，这是最好的索引选择性，性能也是最好的。</p>
+<p>一般情况下某个列前缀的选择性也是足够高的，足以满足查询性能。对于 BLOB、 TEXT 或者很长的 VARCHAR 类型的列，必须使用前缀索引。</p>
+<p>诀窍在于要选择足够长的前缀以保证较高的选择性，同时又不能太长（以便节约空间）。前缀应该足够长，以是的前缀索引的选择性接近于索引整个列。换句话说，前缀的“基数”应该接近于完整列的“基数”。</p>
+<p>为了觉得前缀的合适长度，需要找到最常见的值的列表，然后和最常见的前缀列表进行比较。</p>
+<p>前缀索引时一种能使索引更小、更快的有效办法；也有缺点，MySQL 无法使用前缀索引做 ORDER BY 和 GROUP BY，也无法使用前缀索引做覆盖索引。</p>
+<h3 id="3-多列索引"><a href="#3-多列索引" class="headerlink" title="3.多列索引"></a>3.多列索引</h3><p>一个常见的错误就是，为每个列创建独立的索引，或者按照错误的顺序创建多列索引。</p>
+<p>在多个列上山里独立的单列索引大部分情况下并不能提高 MySQL 的查询性能。 MySQL 5.0 和更新版本引入了一种“索引合并”（index merge）的策略，一定程度上可以使用表上的多个单列索引来定位指定的行。</p>
+<p>索引合并测试有时候是一种优化的结果，但实际上更多时候说明了表上的索引建的很糟糕：</p>
+<p>当出现服务器对多个索引做相交操作时（通常有多个 AND 条件），通常意味着需要一个包含所有相关列的多列索引，而不是多个独立的单列索引。</p>
+<p>当服务器需要多多个索引做联合操作时（通常有多个 OR 条件），通常需要耗费大量 CPU 和内存资源在算法的缓存、排序和合并操作上。特别是当有些索引的选择性不高，需要合并扫描返回的大量数据的时候。</p>
+<p>更重要的是，优化器不会把这些计算的“查询成本”中，优化器只关心随机页面读取。这使得查询的成本被“低估”。</p>
+<p>如果在 EXPLAIN 中看到有索引合并，应该好好检查一下查询和表的结构，看是不是已经是最优的。</p>
+<h3 id="4-选择合适的索引列顺序"><a href="#4-选择合适的索引列顺序" class="headerlink" title="4.选择合适的索引列顺序"></a>4.选择合适的索引列顺序</h3><p>最容易引起困惑的问题就是索引列的顺序。正确的顺序依赖于使用该索引的查询，并且同时需要考虑如何更好地满足排序和分组的需要。本节内容适用于 B-Tree 索引。</p>
+<p>在一个多列 B-Tree 索引中，索引列的顺序意味着索引首先按照最左列进行排序，其次是第二列，以此类推。所以，索引可以按照升序或者降序进行扫描，以满足精确符合列顺序的 ORDER BY、 GROUP BY 和 DISTINCT 等子句的查询需求。</p>
+<p>在 Lahdenmaki 和 Leach 的“三星索引”系统中，列顺序也决定了一个索引是否能够成为一个真正的“三星索引”。</p>
+<p>对于如何选择索引的列顺序有一个经验法则：将选择性最高的列放到索引最前列。通常不如避免随机 IO 和排序那么重要。</p>
+<p>当不需要考虑排序和分组时，将选择性最高的列放到索引最前列通常是很好的。</p>
+<p>性能不只是依赖于所有索引列的选择性（整体基数），也和查询条件的具体值有关，也就是和值的分布有关。</p>
+<p>可能需要根据那些运行效率最高的查询来调整索引列的顺序。</p>
+<p>尽管关于选择性和基数的经验法则值得去研究和分析，但一定要记住别忘了 WHERE 子句中的排序、分组和范围条件等其他因素，这些因素可能对查询的性能早晨非常大的影响。</p>
+<h3 id="5-聚簇索引"><a href="#5-聚簇索引" class="headerlink" title="5.聚簇索引"></a>5.聚簇索引</h3><p>聚簇索引并不是一种单独的索引类型，而是一种数据存储方式。InnoDB 的聚簇索引实际上在同一结构中保存了 B-Tree 索引和数据行。<br>当表有聚簇索引时，它的数据行实际上存放在索引的叶子页（leaf page）中。术语“聚簇”表示数据行和相邻的键值紧凑地存储在一起。因此，一个表只有一个聚簇索引（不过，覆盖索引可以模拟多个聚簇索引的情况）。</p>
+<h3 id="6-覆盖索引"><a href="#6-覆盖索引" class="headerlink" title="6.覆盖索引"></a>6.覆盖索引</h3><p>如果一个索引包含（或者说覆盖）所有需要查询的字段的值，则称之为“覆盖索引”。<br>覆盖索引时非常有用的工具，能够极大地提高性能。优点如下：</p>
+<ul>
+<li>索引条目通常远小于数据行大小，所以如果只需要读取索引，则 MySQL 就会极大地减少数据访问量。</li>
+<li>因为索引时按照列值顺序存储的（至少在单个页内是如此），所以对于 I/O 密集型的范围查询会比随机从磁盘读取每一行数据的 I/O 要少得多。</li>
+<li>一些存储引擎如 MyISAM 在内存中只缓存索引，数据则依赖于操作系统来缓存，因此要访问数据需要一次系统调用。这可能会导致严重的性能问题。</li>
+<li>由于 InnoDB 的聚簇索引，覆盖索引对 InnoDB 表特别有用。如果二级主键能够覆盖查询，则可以避免对主键索引的二次查询。</li>
+</ul>
+<p>不是所有的索引都可以成为覆盖索引。覆盖索引必须要存储索引列的值，而哈希索引、空间索引和全文索引等都不存储索引列的值，所以 MySQL 只能使用 B-Tree 索引做覆盖索引。也不是所有的存储引擎都支持覆盖索引，比如 Memory 不支持。</p>
+<p>索引覆盖查询还有很多陷阱可能会导致无法实现优化。 MySQL 查询优化器会在执行查询前判断是否有一个索引能进行覆盖。</p>
+<p>SELECT *<br>FROM products<br>WHERE actor = ‘SEAN CARREY’<br>      AND title LIKE ‘%APOLLO%’;<br>这里索引无法覆盖该查询，有两个原因：</p>
+<p>没有任何索引能够覆盖这个查询。查询从表中选择了所有的行，而没有任何索引覆盖了所有的列。</p>
+<p>MySQL 不能在索引中执行 LIKE 操作。这是底层存储引擎 API 的限制。MySQL 能在索引中做最左前缀匹配的 LIKE 比较。</p>
+<p>可以重新查询并巧妙地设计索引，先将索引扩展至覆盖三个数据列（actor、title、prod_id），然后如下方式重写查询：</p>
+<p>SELECT *<br>FROM products<br>  JOIN (SELECT prod_id<br>        FROM products<br>        WHERE actor = ‘SEAN CARREY’<br>              AND title LIKE ‘%APOLLO%’) AS t1<br>    ON t1.prod_id = products.prod_id;<br>这种方式叫做延迟关联（deferred join），因为延迟了对列的访问。在查询的第一阶段 MySQL 可以使用覆盖索引，在 FROM 子句的子查询中找到匹配的 prod_id，然后根据这些 prod_id 值在外层查询匹配获取需要的所有列值。</p>
+<h3 id="7-使用索引扫描来做排序"><a href="#7-使用索引扫描来做排序" class="headerlink" title="7.使用索引扫描来做排序"></a>7.使用索引扫描来做排序</h3><p>MySQL 有两种方式可以生成有序的结果：通过排序操作；或者按索引顺序扫描。</p>
+<p>MySQL 可以使用同一个索引既满足排序，又用于查找行。设计索引时应该尽可能地同时满足这两种任务。</p>
+<p>只有当索引的列顺序和 ORDER BY 子句的顺序完全一致，并且所有列的排序方向（倒序或正序）都一样时， MySQL 才能够使用索引来对结果做排序。如果查询需要关联多张表，则只有当 ORDER BY 子句引用的字段全部为第一个表时，才能使用索引做排序。 ORDER BY 子句和查找型查询的限制是一样的：需要满足索引的最左前缀的要求；否则， MySQL 都需要执行排序操作，而无法利用索引排序。</p>
+<p>还有一种情况下 ORDER BY 子句可以不满足索引的最左前缀的要求，就是前导列为常量的时候。可以在 WHERE 子句或者 JOIN 子句中对这些列指定了常量，就可以 “弥补” 索引的不足。</p>
+<p>使用索引做排序的一个最重要的用法是当查询同时有 ORDER BY 和 LIMIT 子句的时候。</p>
+<h3 id="8-压缩（前缀压缩）索引"><a href="#8-压缩（前缀压缩）索引" class="headerlink" title="8. 压缩（前缀压缩）索引"></a>8. 压缩（前缀压缩）索引</h3><p>MyISAM 使用前缀压缩来减少索引的大小，可让更多索引放入内存中，某些情况可以极大提高性能。默认只压缩字符串，通过参数设置可以对整数做压缩。</p>
+<p>MyISAM 压缩每个索引块的方法是，先完全保存索引块中的第一个值，然后将其他值和第一个值进行比较得到相同前缀的字节数和剩余的不同后缀部分，把这部分存储起来即可。</p>
+<p>压缩块使用更少的空间，代价是某些操作可能更慢。 MyISAM 查找时无法再索引块使用二分查找而只能从头开始扫描。正序的扫描速度还不错，但是如果是倒序扫描，就惨了！</p>
+<p>对于 CPU 密集型应用，压缩使得 MyISAM 在索引查找上要慢好几倍。</p>
+<p>可以在 CREATE TABLE 语句汇总指定 PACK_KEYS 参数来控制索引压缩的方式。</p>
+<h3 id="9-冗余和重复索引"><a href="#9-冗余和重复索引" class="headerlink" title="9. 冗余和重复索引"></a>9. 冗余和重复索引</h3><p>重复索引指在相同的列上按照相同的顺序创建的相同类型的索引。</p>
+<p>MySQL 的唯一限制和主键限制都是通过索引实现的。</p>
+<p>冗余索引和重复索引有一些不同。如果创建了索引（A，B），再创建索引（A）就是冗余索引。</p>
+<p>还有一种情况是将一个索引扩展为（A，ID），其中 ID 是主键，对于 InnoDB 来说主键列已经包含在二级索引中，这也是冗余。</p>
+<p>大多数情况下都不需要冗余索引，应该尽快扩展已有的索引而不是创建新索引。但有时处于性能的考虑需要冗余，因为扩展已有的索引会导致其变得太大，从而影响其他使用该索引的查询的性能。</p>
+<p>有时为了覆盖查询，也需要扩展索引。</p>
+<p>一般来说，增加新索引将会对导致 INSERT、 UPDATE、 DELETE 等操作的速度变慢，特别是当新增加索引后导致达到了内存瓶颈的时候。</p>
+<p>解决冗余索引和重复索引的方法很简单，删除这些索引即可，但首先要做的是找出这样的索引。</p>
+<p>在决定哪些索引可以被删除的时候要非常小心。要考虑查询、排序等。可以使用 Percona 工具箱中的 pt-upgrade 工具来检查计划中的索引变更。</p>
+<h3 id="10-未使用的索引"><a href="#10-未使用的索引" class="headerlink" title="10. 未使用的索引"></a>10. 未使用的索引</h3><p>除了冗余索引和重复索引，可能还会有一些服务器永远不用的索引，完全是累赘，建议考虑删除。</p>
+<p>最简单有效的办法是在 Percona Server 或者 MariaDB 中先打开 userstates 变量，让服务器运行一段时间，再通过查询 INFORMATION_SCHEMA.INDEX_STATISTICS 就能查到每个索引的使用频率。</p>
+<p>Percona Toolkit 的 pt-index-usage 读取查询日志，并对日志中的查询进行 EXPLAIN 查找，然后打印出关于索引和查询的报告。</p>
+<h3 id="11-索引和锁"><a href="#11-索引和锁" class="headerlink" title="11. 索引和锁"></a>11. 索引和锁</h3><p>索引可以让查询锁定更少的行。锁定超过需要的行会增加锁争用并减少并发性。</p>
+<p>InnoDB 只有在访问行的时候才会对其加锁，而索引能够减少 InnoDB 访问的行数，从而减少锁的数量。</p>
+<p>InnoDB 在二级索引上使用共享（读）锁，但访问主键索引需要排他（写）锁。</p>
+</div><div class="tags"><a href="/tags/mysql/">mysql</a></div><div class="post-nav"><a class="pre" href="/2017/08/01/mysql-select-optimize/">mysql 查询性能优化一</a><a class="next" href="/2017/07/31/mysql-index/">mysql 索引一 索引原理</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://neoace.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/kong/" style="font-size: 15px;">kong</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a> <a href="/tags/head-first/" style="font-size: 15px;">head first</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/mysql-select-optimize2/">mysql 查询性能优化二 查询执行的基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/mysql-select-optimize/">mysql 查询性能优化一</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/mysql-index-optimize/">mysql 索引二 高性能索引策略</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/mysql-index/">mysql 索引一 索引原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/mysql-alert-table-column/">mysql alert table column</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/16/Idea-use-gerrit-plugin/">Idea使用gerrit插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/读书学习方法/">读书学习方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/mysql学习(一) —— 数据类型的选择/">mysql学习(一) —— 数据类型的选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/榴莲/">榴莲成长史</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/05/Kong安装配置/">Kong安装配置</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">matrix.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
