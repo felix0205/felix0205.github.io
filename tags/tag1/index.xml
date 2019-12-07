@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Matrix</title>
-    <link>https://luckykeith.github.io/</link>
-    <description>Recent content on Matrix</description>
+    <title>tag1 on Matrix</title>
+    <link>https://luckykeith.github.io/tags/tag1/</link>
+    <description>Recent content in tag1 on Matrix</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 05 Dec 2019 10:43:48 +0800</lastBuildDate>
     
-	<atom:link href="https://luckykeith.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luckykeith.github.io/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://luckykeith.github.io/post/hello/</guid>
       <description>hello world</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://luckykeith.github.io/about/</link>
-      <pubDate>Thu, 05 Dec 2019 10:43:05 +0800</pubDate>
-      
-      <guid>https://luckykeith.github.io/about/</guid>
-      <description></description>
     </item>
     
   </channel>
