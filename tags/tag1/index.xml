@@ -17,7 +17,10 @@
       <pubDate>Thu, 05 Dec 2019 10:43:48 +0800</pubDate>
       
       <guid>https://luckykeith.github.io/post/hello/</guid>
-      <description>hello world</description>
+      <description>+++ title = &amp;ldquo;Migrate to Hugo from Jekyll&amp;rdquo; tags = [&amp;ldquo;hugo&amp;rdquo;, &amp;ldquo;jekyll&amp;rdquo;] date = &amp;ldquo;2014-03-10&amp;rdquo; +++
+Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
+▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
+▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.</description>
     </item>
     
   </channel>
