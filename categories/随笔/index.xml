@@ -2,21 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>随笔 on Matrix</title>
-    <link>https://luckykeith.github.io/categories/%E9%9A%8F%E7%AC%94/</link>
+    <link>https://matrix-feng.github.io/categories/%E9%9A%8F%E7%AC%94/</link>
     <description>Recent content in 随笔 on Matrix</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Dec 2019 10:43:05 +0800</lastBuildDate>
-    
-	<atom:link href="https://luckykeith.github.io/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 05 Dec 2019 10:43:05 +0800</lastBuildDate><atom:link href="https://matrix-feng.github.io/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://luckykeith.github.io/about/</link>
+      <link>https://matrix-feng.github.io/about/</link>
       <pubDate>Thu, 05 Dec 2019 10:43:05 +0800</pubDate>
       
-      <guid>https://luckykeith.github.io/about/</guid>
+      <guid>https://matrix-feng.github.io/about/</guid>
       <description>just coder  </description>
     </item>
     
