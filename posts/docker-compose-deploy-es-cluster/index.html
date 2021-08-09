@@ -180,16 +180,21 @@ version: &#39;3.7&#39; services: es01: image: docker.elastic.co/elasticsearch/el
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up -d
 </code></pre></div><p>常见问题：</p>
 <ol>
-<li>权限不足
-报错：Error opening log file ‘logs/gc.log’: Permission denie
-挂在目录权限问题
-解决方法：在环境变量 TAKE_FILE_OWNERSHIP=true</li>
-<li>文件数不足
-报错：ERROR: bootstrap checks failed
-max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
-解决办法：
-临时提高了 vm.max_map_count 的大小，此操作需要 root 权限：</li>
+<li>权限不足</li>
 </ol>
+<ul>
+<li>报错：Error opening log file ‘logs/gc.log’: Permission denie 挂载目录权限问题</li>
+<li>解决方法：在环境变量 TAKE_FILE_OWNERSHIP=true</li>
+</ul>
+<ol start="2">
+<li>文件数不足</li>
+</ol>
+<ul>
+<li>报错：ERROR: bootstrap checks failed
+max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</li>
+<li>解决办法：
+临时提高了 vm.max_map_count 的大小，此操作需要 root 权限：</li>
+</ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo  sysctl -w vm.max_map_count<span style="color:#f92672">=</span><span style="color:#ae81ff">262144</span>
 sysctl -a|grep vm.max_map_count
 </code></pre></div><p>永久修改 vm.max_map_count：切换到 root 用户修改配置 sysctl.conf</p>
@@ -200,12 +205,14 @@ vm.max_map_count<span style="color:#f92672">=</span><span style="color:#ae81ff">
 sysctl -p
 然后，重新启动elasticsearch，即可启动成功。
 </code></pre></div><ol start="3">
-<li>jvm配置问题
-2017-01-12T16:12:22,404][INFO ][o.e.b.BootstrapCheck     ] [SfD5sIh] bound or publishing to a non-loopback or non-link-local address, enforcing bootstrap checks
+<li>jvm配置问题</li>
+</ol>
+<ul>
+<li>2017-01-12T16:12:22,404][INFO ][o.e.b.BootstrapCheck     ] [SfD5sIh] bound or publishing to a non-loopback or non-link-local address, enforcing bootstrap checks
 ERROR: bootstrap checks failed
 initial heap size [536870912] not equal to maximum heap size [1073741824]; this can cause resize pauses and prevents mlockall from locking the entire heap
 解决方法：vi config/jvm.options</li>
-</ol>
+</ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">###-Xms 和 -Xmx需要配置的相等，不然无法启动成功。</span>
 -Xms1024m
 -Xmx1024m
