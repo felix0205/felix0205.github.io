@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Matrix</title>
-    <link>https://felix0205.github.io/</link>
+    <link>https://feng-lucky.github.io/</link>
     <description>Recent content on Matrix</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Dec 2020 13:41:06 +0800</lastBuildDate><atom:link href="https://felix0205.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Dec 2020 13:41:06 +0800</lastBuildDate><atom:link href="https://feng-lucky.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker-compose 部署 es集群</title>
-      <link>https://felix0205.github.io/posts/docker-compose-deploy-es-cluster/</link>
+      <link>https://feng-lucky.github.io/posts/docker-compose-deploy-es-cluster/</link>
       <pubDate>Tue, 08 Dec 2020 13:41:06 +0800</pubDate>
       
-      <guid>https://felix0205.github.io/posts/docker-compose-deploy-es-cluster/</guid>
+      <guid>https://feng-lucky.github.io/posts/docker-compose-deploy-es-cluster/</guid>
       <description>docker-compose.yml 文件
 version: &amp;#39;3.7&amp;#39; services: es01: image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1 container_name: es01 environment: - node.name=es01 - cluster.name=es-docker-cluster - discovery.seed_hosts=es02,es03 - cluster.initial_master_nodes=es01,es02,es03 - bootstrap.memory_lock=true  - &amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34; ulimits: memlock: soft: -1 hard: -1 volumes: - /Users/keith/devtools/docker/es-docker/data01/data:/usr/share/elasticsearch/data - /Users/keith/devtools/docker/es-docker/data01/logs:/usr/share/elasticsearch/logs ports: - 9200:9200 networks: - elastic es02: image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1 container_name: es02 environment: - node.name=es02 - cluster.name=es-docker-cluster - discovery.seed_hosts=es01,es03 - cluster.initial_master_nodes=es01,es02,es03 - bootstrap.memory_lock=true - &amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34; ulimits: memlock: soft: -1 hard: -1 volumes: - /Users/keith/devtools/docker/es-docker/data02/data:/usr/share/elasticsearch/data - /Users/keith/devtools/docker/es-docker/data02/logs:/usr/share/elasticsearch/logs networks: - elastic es03: image: docker.</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://felix0205.github.io/about/</link>
+      <link>https://feng-lucky.github.io/about/</link>
       <pubDate>Sat, 05 Dec 2020 10:43:05 +0800</pubDate>
       
-      <guid>https://felix0205.github.io/about/</guid>
+      <guid>https://feng-lucky.github.io/about/</guid>
       <description>just coder  </description>
     </item>
     
