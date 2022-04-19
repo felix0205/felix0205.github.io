@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>随笔 on Matrix</title>
-    <link>https://fengnix.github.io/categories/%E9%9A%8F%E7%AC%94/</link>
+    <link>https://liufenix.github.io/categories/%E9%9A%8F%E7%AC%94/</link>
     <description>Recent content in 随笔 on Matrix</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Dec 2020 10:43:05 +0800</lastBuildDate><atom:link href="https://fengnix.github.io/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Dec 2020 10:43:05 +0800</lastBuildDate><atom:link href="https://liufenix.github.io/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://fengnix.github.io/about/</link>
+      <link>https://liufenix.github.io/about/</link>
       <pubDate>Sat, 05 Dec 2020 10:43:05 +0800</pubDate>
       
-      <guid>https://fengnix.github.io/about/</guid>
+      <guid>https://liufenix.github.io/about/</guid>
       <description>just coder  </description>
     </item>
     
