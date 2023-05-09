@@ -6,7 +6,18 @@
     <description>Recent content on Matrix</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Dec 2020 13:41:06 +0800</lastBuildDate><atom:link href="https://liufenix.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 May 2023 19:44:17 +0800</lastBuildDate><atom:link href="https://liufenix.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arthas 简单实用</title>
+      <link>https://liufenix.github.io/posts/arthas-get-start/</link>
+      <pubDate>Tue, 09 May 2023 19:44:17 +0800</pubDate>
+      
+      <guid>https://liufenix.github.io/posts/arthas-get-start/</guid>
+      <description>什么是Arthas Arthas是阿里巴巴开源的一款线上监控诊断产品，能够实时查看应用加载、内存、垃圾收集、线程等信息。可以在不修改代码的情况下，对线上应用进行诊断监控，大大提升异常排查效率。
+启动arthas 在命令行下面执行（使用和目标进程一致的用户启动，否则可能 attach 失败）：
+curl -O https://arthas.aliyun.com/arthas-boot.jar java -jar arthas-boot.jar 查看dashboard 输入dashboard，按回车/enter，会展示当前进程的信息，如 HTTP 请求的 qps, rt, 错误数, 线程池信息等等。按ctrl+c可以中断执行。</description>
+    </item>
+    
     <item>
       <title>docker-compose 部署 es集群</title>
       <link>https://liufenix.github.io/posts/docker-compose-deploy-es-cluster/</link>
