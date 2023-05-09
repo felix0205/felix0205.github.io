@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://liufenix.github.io/tags/arthas/</loc>
+    <lastmod>2023-05-09T19:44:17+08:00</lastmod>
+  </url><url>
     <loc>https://liufenix.github.io/posts/arthas-get-start/</loc>
+    <lastmod>2023-05-09T19:44:17+08:00</lastmod>
+  </url><url>
+    <loc>https://liufenix.github.io/categories/</loc>
+    <lastmod>2023-05-09T19:44:17+08:00</lastmod>
+  </url><url>
+    <loc>https://liufenix.github.io/tags/java/</loc>
     <lastmod>2023-05-09T19:44:17+08:00</lastmod>
   </url><url>
     <loc>https://liufenix.github.io/</loc>
@@ -11,19 +20,16 @@
     <loc>https://liufenix.github.io/posts/</loc>
     <lastmod>2023-05-09T19:44:17+08:00</lastmod>
   </url><url>
-    <loc>https://liufenix.github.io/categories/</loc>
-    <lastmod>2020-12-08T13:41:06+08:00</lastmod>
+    <loc>https://liufenix.github.io/tags/</loc>
+    <lastmod>2023-05-09T19:44:17+08:00</lastmod>
+  </url><url>
+    <loc>https://liufenix.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2023-05-09T19:44:17+08:00</lastmod>
   </url><url>
     <loc>https://liufenix.github.io/posts/docker-compose-deploy-es-cluster/</loc>
     <lastmod>2020-12-08T13:41:06+08:00</lastmod>
   </url><url>
     <loc>https://liufenix.github.io/tags/elasticsearch/</loc>
-    <lastmod>2020-12-08T13:41:06+08:00</lastmod>
-  </url><url>
-    <loc>https://liufenix.github.io/tags/</loc>
-    <lastmod>2020-12-08T13:41:06+08:00</lastmod>
-  </url><url>
-    <loc>https://liufenix.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2020-12-08T13:41:06+08:00</lastmod>
   </url><url>
     <loc>https://liufenix.github.io/about/</loc>
