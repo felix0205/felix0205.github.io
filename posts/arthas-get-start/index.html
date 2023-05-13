@@ -90,7 +90,7 @@ $ watch demo.MathGame primeFactors returnObj Press Ctrl&#43;C to abort. Affect(c
 </span></span><span style="display:flex;"><span>java -jar arthas-boot.jar
 </span></span></code></pre></div><h1 id="查看dashboard">查看dashboard</h1>
 <p>输入dashboard，按回车/enter，会展示当前进程的信息，如 HTTP 请求的 qps, rt, 错误数, 线程池信息等等。按ctrl+c可以中断执行。</p>
-<p><img src="/img/arthas-dashboard.png" alt="dashboard截图"></p>
+<p><img src="https://note-obj.oss-cn-beijing.aliyuncs.com/img/202305131913038.png" alt="arthas-dashboard.png"></p>
 <h1 id="watch">watch</h1>
 <p>通过<a href="https://arthas.aliyun.com/doc/watch.html">watch</a>命令来查看<code>demo.MathGame#primeFactors</code>函数的返回值：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ watch demo.MathGame primeFactors returnObj
