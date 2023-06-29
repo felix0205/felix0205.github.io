@@ -105,7 +105,7 @@ version: &amp;#39;3.7&amp;#39; services: es01: image: docker.elastic.co/elastics
       <pubDate>Sat, 05 Dec 2020 10:43:05 +0800</pubDate>
       
       <guid>https://liufenix.github.io/about/</guid>
-      <description>just a coder ~ ~ </description>
+      <description>just a coder hello world</description>
     </item>
     
   </channel>
