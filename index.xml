@@ -25,10 +25,10 @@ Scheduler 表示背后驱动反应式流的调度器，通常由各种线程池�
     
     <item>
       <title>关于我</title>
-      <link>https://liufenix.github.io/about/</link>
+      <link>https://liufenix.github.io/posts/about/</link>
       <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://liufenix.github.io/about/</guid>
+      <guid>https://liufenix.github.io/posts/about/</guid>
       <description>just a coder ~ ~ hello world </description>
     </item>
     
