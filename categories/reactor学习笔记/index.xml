@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 22 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://liufenix.github.io/categories/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reactor介绍</title>
-      <link>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/1.reactor%E4%BB%8B%E7%BB%8D/</link>
+      <link>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/1reactor%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/1.reactor%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/1reactor%E4%BB%8B%E7%BB%8D/</guid>
       <description>Reactor是什么？ Reactor 框架是 Pivotal 公司开发的，实现了 Reactive Programming 思想，符合 Reactive Streams 规范（Reactive Streams 是由 Netflix、TypeSafe、Pivotal 等公司发起的）的一项开源项目。
 Reactor 是完全基于反应式流规范设计和实现的库，是 Spring 5 中反应式编程的基础。
 Reactor 官方的描述：
