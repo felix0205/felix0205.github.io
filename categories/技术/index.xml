@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 10 May 2023 21:08:19 +0800</lastBuildDate><atom:link href="https://liufenix.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spring单元测试中的依赖注入问题</title>
-      <link>https://liufenix.github.io/posts/spring-inject-unit-test/</link>
+      <link>https://liufenix.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/spring-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%97%B6%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</link>
       <pubDate>Wed, 10 May 2023 21:08:19 +0800</pubDate>
       
-      <guid>https://liufenix.github.io/posts/spring-inject-unit-test/</guid>
+      <guid>https://liufenix.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/spring-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%97%B6%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</guid>
       <description>场景 项目中涉及到调用第三方服务接口的逻辑，而且会有一些衍生项目，也需要调用相同的接口，所以，提出了一个公共包，将调用逻辑封装到公共包中。但是调用接口逻辑中使用了Spring提供的一些模版工具，例如RedisTemplate，RestTemplate。在公共包中实现单元测试时，通过依赖注入的模版工具属性会报空指针异常等一系列问题。
 问题一 使用原生junit test测试，由于没用启动动spring容器，如果类中有通过spring 依赖注入的属性，会报空指针。
 解决方案 在测试类上增加***@SpringBootTest***，***@RunWith(SpringJUnit4ClassRunner.class)***注解
@@ -27,10 +27,10 @@ java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you 
     
     <item>
       <title>Arthas 简单使用</title>
-      <link>https://liufenix.github.io/posts/arthas-get-start/</link>
+      <link>https://liufenix.github.io/posts/arthas/arthas%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</link>
       <pubDate>Tue, 09 May 2023 19:44:17 +0800</pubDate>
       
-      <guid>https://liufenix.github.io/posts/arthas-get-start/</guid>
+      <guid>https://liufenix.github.io/posts/arthas/arthas%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</guid>
       <description>什么是Arthas Arthas是阿里巴巴开源的一款线上监控诊断产品，能够实时查看应用加载、内存、垃圾收集、线程等信息。可以在不修改代码的情况下，对线上应用进行诊断监控，大大提升异常排查效率。
 启动arthas 在命令行下面执行（使用和目标进程一致的用户启动，否则可能 attach 失败）：
 curl -O https://arthas.aliyun.com/arthas-boot.jar java -jar arthas-boot.jar 查看dashboard 输入dashboard，按回车/enter，会展示当前进程的信息，如 HTTP 请求的 qps, rt, 错误数, 线程池信息等等。按ctrl+c可以中断执行。
@@ -40,10 +40,10 @@ $ watch demo.MathGame primeFactors returnObj Press Ctrl+C to abort. Affect(class
     
     <item>
       <title>docker-compose 部署 es集群</title>
-      <link>https://liufenix.github.io/posts/docker-compose-deploy-es-cluster/</link>
+      <link>https://liufenix.github.io/posts/docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Tue, 08 Dec 2020 13:41:06 +0800</pubDate>
       
-      <guid>https://liufenix.github.io/posts/docker-compose-deploy-es-cluster/</guid>
+      <guid>https://liufenix.github.io/posts/docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</guid>
       <description>docker-compose.yml 文件
 version: &amp;#39;3.7&amp;#39; services: es01: image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1 container_name: es01 environment: - node.name=es01 - cluster.name=es-docker-cluster - discovery.seed_hosts=es02,es03 - cluster.initial_master_nodes=es01,es02,es03 - bootstrap.memory_lock=true - &amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34; ulimits: memlock: soft: -1 hard: -1 volumes: - /Users/keith/devtools/docker/es-docker/data01/data:/usr/share/elasticsearch/data - /Users/keith/devtools/docker/es-docker/data01/logs:/usr/share/elasticsearch/logs ports: - 9200:9200 networks: - elastic es02: image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1 container_name: es02 environment: - node.name=es02 - cluster.name=es-docker-cluster - discovery.seed_hosts=es01,es03 - cluster.initial_master_nodes=es01,es02,es03 - bootstrap.memory_lock=true - &amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34; ulimits: memlock: soft: -1 hard: -1 volumes: - /Users/keith/devtools/docker/es-docker/data02/data:/usr/share/elasticsearch/data - /Users/keith/devtools/docker/es-docker/data02/logs:/usr/share/elasticsearch/logs networks: - elastic es03: image: docker.</description>
     </item>
