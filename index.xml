@@ -24,6 +24,15 @@ Scheduler 表示背后驱动反应式流的调度器，通常由各种线程池�
     </item>
     
     <item>
+      <title>About</title>
+      <link>https://liufenix.github.io/about/</link>
+      <pubDate>Sat, 05 Dec 2020 10:43:05 +0800</pubDate>
+      
+      <guid>https://liufenix.github.io/about/</guid>
+      <description>just a coder hello world</description>
+    </item>
+    
+    <item>
       <title>Reactor的历史</title>
       <link>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/2reactor%E5%8E%86%E5%8F%B2/</link>
       <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
@@ -97,15 +106,6 @@ $ watch demo.MathGame primeFactors returnObj Press Ctrl+C to abort. Affect(class
       <guid>https://liufenix.github.io/posts/docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</guid>
       <description>docker-compose.yml 文件
 version: &amp;#39;3.7&amp;#39; services: es01: image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1 container_name: es01 environment: - node.name=es01 - cluster.name=es-docker-cluster - discovery.seed_hosts=es02,es03 - cluster.initial_master_nodes=es01,es02,es03 - bootstrap.memory_lock=true - &amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34; ulimits: memlock: soft: -1 hard: -1 volumes: - /Users/keith/devtools/docker/es-docker/data01/data:/usr/share/elasticsearch/data - /Users/keith/devtools/docker/es-docker/data01/logs:/usr/share/elasticsearch/logs ports: - 9200:9200 networks: - elastic es02: image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1 container_name: es02 environment: - node.name=es02 - cluster.name=es-docker-cluster - discovery.seed_hosts=es01,es03 - cluster.initial_master_nodes=es01,es02,es03 - bootstrap.memory_lock=true - &amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34; ulimits: memlock: soft: -1 hard: -1 volumes: - /Users/keith/devtools/docker/es-docker/data02/data:/usr/share/elasticsearch/data - /Users/keith/devtools/docker/es-docker/data02/logs:/usr/share/elasticsearch/logs networks: - elastic es03: image: docker.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://liufenix.github.io/about/</link>
-      <pubDate>Sat, 05 Dec 2020 10:43:05 +0800</pubDate>
-      
-      <guid>https://liufenix.github.io/about/</guid>
-      <description>just a coder hello world</description>
     </item>
     
   </channel>
