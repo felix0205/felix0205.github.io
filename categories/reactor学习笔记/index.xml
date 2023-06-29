@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 22 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://liufenix.github.io/categories/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reactor介绍</title>
-      <link>https://liufenix.github.io/posts/reactor/introduction/introduction/</link>
+      <link>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/reactor%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://liufenix.github.io/posts/reactor/introduction/introduction/</guid>
+      <guid>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/reactor%E4%BB%8B%E7%BB%8D/</guid>
       <description>Reactor是什么？ Reactor 框架是 Pivotal 公司开发的，实现了 Reactive Programming 思想，符合 Reactive Streams 规范（Reactive Streams 是由 Netflix、TypeSafe、Pivotal 等公司发起的）的一项开源项目。
 Reactor 是完全基于反应式流规范设计和实现的库，是 Spring 5 中反应式编程的基础。
 Reactor 官方的描述：
@@ -25,10 +25,10 @@ Scheduler 表示背后驱动反应式流的调度器，通常由各种线程池�
     
     <item>
       <title>Reactor的历史</title>
-      <link>https://liufenix.github.io/posts/reactor/introduction/history/</link>
+      <link>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/reactor%E5%8E%86%E5%8F%B2/</link>
       <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://liufenix.github.io/posts/reactor/introduction/history/</guid>
+      <guid>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/reactor%E5%8E%86%E5%8F%B2/</guid>
       <description>背景：响应式编程 响应式编程（Reactive Programming）是一种新的编程范式，中文称响应式（或反应式）编程，是一种高性能应用的编程方式。其最早是由微软提出并引入到 .NET 平台中，随后 ES6 也引入了类似的技术。在 Java 平台上，较早采用反应式编程技术的是 Netflix 公司开源的 RxJava 框架。现在大家比较熟知的 Hystrix 就是以 RxJava 为基础开发的。
 响应式编程来源于数据流和变化的传播，意味着由底层的执行模型负责通过数据流来自动传播变化。
 比如求值一个简单的表达式 c=a+b，当 a 或者 b 的值发生变化时，传统的编程范式需要对 a+b 进行重新计算来得到 c 的值。如果使用反应式编程，当 a 或者 b 的值发生变化时，c 的值会自动更新。
@@ -41,10 +41,10 @@ event Iterable (pull) Observable (push) retrieve data T next() onNext(T) discove
     
     <item>
       <title>资料收集</title>
-      <link>https://liufenix.github.io/posts/reactor/introduction/infomation/</link>
+      <link>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/</link>
       <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://liufenix.github.io/posts/reactor/introduction/infomation/</guid>
+      <guid>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/</guid>
       <description>官方资料 Reactor项目官网 Reactor官方文档 Reactor Code Reference Reactor orgnization @ github
 Reactor-core仓库 官方提供的学习和练习资料
 Lite Rx API Hands-on: 动手练习项目 Head-First Reactive Workshop 社区资料 学习资料 Intro To Reactor Core: 2020
