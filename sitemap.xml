@@ -5,6 +5,12 @@
     <loc>https://liufenix.github.io/posts/reactor/introduction/introduction/</loc>
     <lastmod>2023-01-22T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://liufenix.github.io/posts/reactor/introduction/history/</loc>
+    <lastmod>2023-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://liufenix.github.io/posts/reactor/introduction/infomation/</loc>
+    <lastmod>2023-01-18T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://liufenix.github.io/categories/</loc>
     <lastmod>2023-05-10T21:08:19+08:00</lastmod>
   </url><url>
@@ -44,7 +50,7 @@
     <loc>https://liufenix.github.io/tags/reactor/</loc>
     <lastmod>2023-01-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://liufenix.github.io/categories/reactor/</loc>
+    <loc>https://liufenix.github.io/categories/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-01-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://liufenix.github.io/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/</loc>
@@ -62,7 +68,11 @@
     <loc>https://liufenix.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2020-12-05T10:43:05+08:00</lastmod>
   </url><url>
+    <loc>https://liufenix.github.io/images/backpressure.webp/</loc>
+  </url><url>
     <loc>https://liufenix.github.io/images/reactor-logo.png/</loc>
+  </url><url>
+    <loc>https://liufenix.github.io/images/spring-reactive.jpg/</loc>
   </url><url>
     <loc>https://liufenix.github.io/images/</loc>
   </url>

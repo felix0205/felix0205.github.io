@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on Matrix</title>
-    <link>https://liufenix.github.io/tags/java/</link>
-    <description>Recent content in Java on Matrix</description>
+    <title>Reactor学习笔记 on Matrix</title>
+    <link>https://liufenix.github.io/categories/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in Reactor学习笔记 on Matrix</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 May 2023 21:08:19 +0800</lastBuildDate><atom:link href="https://liufenix.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://liufenix.github.io/categories/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reactor介绍</title>
       <link>https://liufenix.github.io/posts/reactor/introduction/introduction/</link>
@@ -56,37 +56,6 @@ Reactor模式详解＋源码实现: 2017
 Spring Reactor 入门与实践: 2017
 Reactor 实例解析: 2016，文章很长，很细致
 Reactive programming 一种技术 各自表述</description>
-    </item>
-    
-    <item>
-      <title>Spring单元测试中的依赖注入问题</title>
-      <link>https://liufenix.github.io/posts/spring-inject-unit-test/</link>
-      <pubDate>Wed, 10 May 2023 21:08:19 +0800</pubDate>
-      
-      <guid>https://liufenix.github.io/posts/spring-inject-unit-test/</guid>
-      <description>场景 项目中涉及到调用第三方服务接口的逻辑，而且会有一些衍生项目，也需要调用相同的接口，所以，提出了一个公共包，将调用逻辑封装到公共包中。但是调用接口逻辑中使用了Spring提供的一些模版工具，例如RedisTemplate，RestTemplate。在公共包中实现单元测试时，通过依赖注入的模版工具属性会报空指针异常等一系列问题。
-问题一 使用原生junit test测试，由于没用启动动spring容器，如果类中有通过spring 依赖注入的属性，会报空指针。
-解决方案 在测试类上增加***@SpringBootTest***，***@RunWith(SpringJUnit4ClassRunner.class)***注解
-使用spring 容器的方式启动测试
-@Slf4j @SpringBootTest @RunWith(SpringJUnit4ClassRunner.class) class DemoTest { } 问题二 按照上一个问题解决方案增加***@SpringBootTest***后，测试启动还是失败，异常如下：
-java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration or @SpringBootTest(classes=...) with your test at org.springframework.util.Assert.state(Assert.java:73) at org.springframework.boot.test.context.SpringBootTestContextBootstrapper.getOrFindConfigurationClasses(SpringBootTestContextBootstrapper.java:233) 由于本项目为公共包项目，没有配置项目启动类，所以使用***@SpringBootTest***时，测试启动时会失败。
-解决方案 创建配置类，并设置组建扫描注解
-@ComponentScan(basePackages = {&amp;#34;com.demo&amp;#34;}) @Configuration public class ApplicationConfig { } 在当前测试类的***@SpringBootTest***注解中，指定classes属性
-@SpringBootTest(classes = {ApplicationConfig.class}) 在配置里ApplicationConfig中创建需要的TemplateBean
-@Bean public RedisConnectionFactory redisConnectionFactory() { // 创建一个单点的redis配置 RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration(REDIS_HOST_NAME, REDIS_PORT); redisStandaloneConfiguration.setPassword(REDIS_PASSWORD); // 创建一个客户端构造器 LettucePoolingClientConfiguration.</description>
-    </item>
-    
-    <item>
-      <title>Arthas 简单使用</title>
-      <link>https://liufenix.github.io/posts/arthas-get-start/</link>
-      <pubDate>Tue, 09 May 2023 19:44:17 +0800</pubDate>
-      
-      <guid>https://liufenix.github.io/posts/arthas-get-start/</guid>
-      <description>什么是Arthas Arthas是阿里巴巴开源的一款线上监控诊断产品，能够实时查看应用加载、内存、垃圾收集、线程等信息。可以在不修改代码的情况下，对线上应用进行诊断监控，大大提升异常排查效率。
-启动arthas 在命令行下面执行（使用和目标进程一致的用户启动，否则可能 attach 失败）：
-curl -O https://arthas.aliyun.com/arthas-boot.jar java -jar arthas-boot.jar 查看dashboard 输入dashboard，按回车/enter，会展示当前进程的信息，如 HTTP 请求的 qps, rt, 错误数, 线程池信息等等。按ctrl+c可以中断执行。
-watch 通过watch命令来查看demo.MathGame#primeFactors函数的返回值：
-$ watch demo.MathGame primeFactors returnObj Press Ctrl+C to abort. Affect(class-cnt:1 , method-cnt:1) cost in 107 ms. ts=2018-11-28 19:22:30; [cost=1.715367ms] result=null ts=2018-11-28 19:22:31; [cost=0.185203ms] result=null ts=2018-11-28 19:22:32; [cost=19.012416ms] result=@ArrayList[ @Integer[5], @Integer[47], @Integer[2675531], ] ts=2018-11-28 19:22:33; [cost=0.311395ms] result=@ArrayList[ @Integer[2], @Integer[5], @Integer[317], @Integer[503], @Integer[887], ] ts=2018-11-28 19:22:34; [cost=10.136007ms] result=@ArrayList[ @Integer[2], @Integer[2], @Integer[3], @Integer[3], @Integer[31], @Integer[717593], ] ts=2018-11-28 19:22:35; [cost=29.</description>
     </item>
     
   </channel>
