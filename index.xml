@@ -108,32 +108,5 @@ version: &amp;#39;3.7&amp;#39; services: es01: image: docker.elastic.co/elastics
       <description>just a coder ~ ~ </description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://liufenix.github.io/images/backpressure.webp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://liufenix.github.io/images/backpressure.webp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://liufenix.github.io/images/reactor-logo.png/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://liufenix.github.io/images/reactor-logo.png/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://liufenix.github.io/images/spring-reactive.jpg/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://liufenix.github.io/images/spring-reactive.jpg/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>
