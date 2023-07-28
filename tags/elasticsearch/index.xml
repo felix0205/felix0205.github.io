@@ -5,15 +5,17 @@
     <link>https://virtual-matrix.github.io/tags/elasticsearch/</link>
     <description>Recent content in elasticsearch on Matrix</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-hans</language>
+    <language>en-us</language>
     <lastBuildDate>Tue, 08 Dec 2020 13:41:06 +0800</lastBuildDate><atom:link href="https://virtual-matrix.github.io/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker-compose 部署 es集群</title>
-      <link>https://virtual-matrix.github.io/posts/Docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</link>
+      <link>https://virtual-matrix.github.io/posts/docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Tue, 08 Dec 2020 13:41:06 +0800</pubDate>
       
-      <guid>https://virtual-matrix.github.io/posts/Docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</guid>
-      <description>为了方便学习elasticsearch，通过docker compose快速搭建环境。没有安装docker和docker compose的小伙伴可以先看关于docker及docker compose的安装。 docker-compose.yml 文件如下： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34</description>
+      <guid>https://virtual-matrix.github.io/posts/docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</guid>
+      <description>为了方便学习elasticsearch，通过docker compose快速搭建环境。没有安装docker和docker compose的小伙伴可以先看关于docker及docker compose的安装。
+docker-compose.yml 文件如下：
+version: &amp;#39;3.7&amp;#39; services: es01: image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1 container_name: es01 environment: - node.name=es01 - cluster.name=es-docker-cluster - discovery.seed_hosts=es02,es03 - cluster.initial_master_nodes=es01,es02,es03 - bootstrap.memory_lock=true - &amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34; ulimits: memlock: soft: -1 hard: -1 volumes: - /Users/keith/devtools/docker/es-docker/data01/data:/usr/share/elasticsearch/data - /Users/keith/devtools/docker/es-docker/data01/logs:/usr/share/elasticsearch/logs ports: - 9200:9200 networks: - elastic es02: image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1 container_name: es02 environment: - node.name=es02 - cluster.name=es-docker-cluster - discovery.seed_hosts=es01,es03 - cluster.initial_master_nodes=es01,es02,es03 - bootstrap.memory_lock=true - &amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34; ulimits: memlock: soft: -1 hard: -1 volumes: - /Users/keith/devtools/docker/es-docker/data02/data:/usr/share/elasticsearch/data - /Users/keith/devtools/docker/es-docker/data02/logs:/usr/share/elasticsearch/logs networks: - elastic es03: image: docker.</description>
     </item>
     
   </channel>

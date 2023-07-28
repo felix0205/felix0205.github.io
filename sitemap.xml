@@ -2,19 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://virtual-matrix.github.io/posts/Reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/1Reactor%E4%BB%8B%E7%BB%8D/</loc>
+    <loc>https://virtual-matrix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/1reactor%E4%BB%8B%E7%BB%8D/</loc>
     <lastmod>2023-01-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://virtual-matrix.github.io/posts/Reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/2Reactor%E5%8E%86%E5%8F%B2/</loc>
+    <loc>https://virtual-matrix.github.io/about/</loc>
     <lastmod>2023-01-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://virtual-matrix.github.io/posts/Reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/3%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/</loc>
+    <loc>https://virtual-matrix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/2reactor%E5%8E%86%E5%8F%B2/</loc>
+    <lastmod>2023-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://virtual-matrix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/3%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/</loc>
     <lastmod>2023-01-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://virtual-matrix.github.io/categories/</loc>
     <lastmod>2023-05-10T21:08:19+08:00</lastmod>
   </url><url>
-    <loc>https://virtual-matrix.github.io/tags/Java/</loc>
+    <loc>https://virtual-matrix.github.io/tags/java/</loc>
     <lastmod>2023-05-10T21:08:19+08:00</lastmod>
   </url><url>
     <loc>https://virtual-matrix.github.io/</loc>
@@ -23,13 +26,13 @@
     <loc>https://virtual-matrix.github.io/posts/</loc>
     <lastmod>2023-05-10T21:08:19+08:00</lastmod>
   </url><url>
-    <loc>https://virtual-matrix.github.io/tags/Spring/</loc>
+    <loc>https://virtual-matrix.github.io/tags/spring/</loc>
     <lastmod>2023-05-10T21:08:19+08:00</lastmod>
   </url><url>
-    <loc>https://virtual-matrix.github.io/tags/Springboot/</loc>
+    <loc>https://virtual-matrix.github.io/tags/springboot/</loc>
     <lastmod>2023-05-10T21:08:19+08:00</lastmod>
   </url><url>
-    <loc>https://virtual-matrix.github.io/posts/Spring/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/Spring-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%97%B6%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</loc>
+    <loc>https://virtual-matrix.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/spring-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%97%B6%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</loc>
     <lastmod>2023-05-10T21:08:19+08:00</lastmod>
   </url><url>
     <loc>https://virtual-matrix.github.io/tags/</loc>
@@ -41,32 +44,25 @@
     <loc>https://virtual-matrix.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2023-05-10T21:08:19+08:00</lastmod>
   </url><url>
-    <loc>https://virtual-matrix.github.io/tags/Arthas/</loc>
+    <loc>https://virtual-matrix.github.io/tags/arthas/</loc>
     <lastmod>2023-05-09T19:44:17+08:00</lastmod>
   </url><url>
-    <loc>https://virtual-matrix.github.io/posts/Arthas/Arthas%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</loc>
+    <loc>https://virtual-matrix.github.io/posts/arthas/arthas%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</loc>
     <lastmod>2023-05-09T19:44:17+08:00</lastmod>
   </url><url>
     <loc>https://virtual-matrix.github.io/tags/reactor/</loc>
     <lastmod>2023-01-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://virtual-matrix.github.io/categories/Reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://virtual-matrix.github.io/categories/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-01-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://virtual-matrix.github.io/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2023-01-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://virtual-matrix.github.io/posts/Docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</loc>
+    <loc>https://virtual-matrix.github.io/posts/docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</loc>
     <lastmod>2020-12-08T13:41:06+08:00</lastmod>
   </url><url>
     <loc>https://virtual-matrix.github.io/tags/elasticsearch/</loc>
     <lastmod>2020-12-08T13:41:06+08:00</lastmod>
-  </url><url>
-    <loc>https://virtual-matrix.github.io/about/</loc>
-    <lastmod>2015-03-10T00:13:27+00:00</lastmod>
-  </url><url>
-    <loc>https://virtual-matrix.github.io/archives/</loc>
-  </url><url>
-    <loc>https://virtual-matrix.github.io/search/</loc>
   </url>
 </urlset>
