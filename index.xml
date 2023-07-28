@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Matrix</title>
-    <link>https://liufenix.github.io/</link>
+    <link>https://virtual-matrix.github.io/</link>
     <description>Recent content on Matrix</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 May 2023 21:08:19 +0800</lastBuildDate><atom:link href="https://liufenix.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 May 2023 21:08:19 +0800</lastBuildDate><atom:link href="https://virtual-matrix.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1、Reactor介绍</title>
-      <link>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/1reactor%E4%BB%8B%E7%BB%8D/</link>
+      <link>https://virtual-matrix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/1reactor%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/1reactor%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>https://virtual-matrix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/1reactor%E4%BB%8B%E7%BB%8D/</guid>
       <description>Reactor是什么？ Reactor 框架是 Pivotal 公司开发的，实现了 Reactive Programming 思想，符合 Reactive Streams 规范（Reactive Streams 是由 Netflix、TypeSafe、Pivotal 等公司发起的）的一项开源项目。
 Reactor 是完全基于反应式流规范设计和实现的库，是 Spring 5 中反应式编程的基础。
 Reactor 官方的描述：
@@ -25,19 +25,19 @@ Scheduler 表示背后驱动反应式流的调度器，通常由各种线程池�
     
     <item>
       <title>关于我</title>
-      <link>https://liufenix.github.io/about/</link>
+      <link>https://virtual-matrix.github.io/about/</link>
       <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://liufenix.github.io/about/</guid>
+      <guid>https://virtual-matrix.github.io/about/</guid>
       <description>just a coder ~ ~ hello world ! </description>
     </item>
     
     <item>
       <title>2、Reactor的历史</title>
-      <link>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/2reactor%E5%8E%86%E5%8F%B2/</link>
+      <link>https://virtual-matrix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/2reactor%E5%8E%86%E5%8F%B2/</link>
       <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/2reactor%E5%8E%86%E5%8F%B2/</guid>
+      <guid>https://virtual-matrix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/2reactor%E5%8E%86%E5%8F%B2/</guid>
       <description>背景：响应式编程 响应式编程（Reactive Programming）是一种新的编程范式，中文称响应式（或反应式）编程，是一种高性能应用的编程方式。其最早是由微软提出并引入到 .NET 平台中，随后 ES6 也引入了类似的技术。在 Java 平台上，较早采用反应式编程技术的是 Netflix 公司开源的 RxJava 框架。现在大家比较熟知的 Hystrix 就是以 RxJava 为基础开发的。
 响应式编程来源于数据流和变化的传播，意味着由底层的执行模型负责通过数据流来自动传播变化。
 比如求值一个简单的表达式 c=a+b，当 a 或者 b 的值发生变化时，传统的编程范式需要对 a+b 进行重新计算来得到 c 的值。如果使用反应式编程，当 a 或者 b 的值发生变化时，c 的值会自动更新。
@@ -50,10 +50,10 @@ event Iterable (pull) Observable (push) retrieve data T next() onNext(T) discove
     
     <item>
       <title>3、资料收集</title>
-      <link>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/3%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/</link>
+      <link>https://virtual-matrix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/3%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/</link>
       <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://liufenix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/3%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/</guid>
+      <guid>https://virtual-matrix.github.io/posts/reactor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BB%8B%E7%BB%8D/3%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/</guid>
       <description>官方资料 Reactor项目官网 Reactor官方文档 Reactor Code Reference Reactor orgnization @ github
 Reactor-core仓库 官方提供的学习和练习资料
 Lite Rx API Hands-on: 动手练习项目 Head-First Reactive Workshop 社区资料 学习资料 Intro To Reactor Core: 2020
@@ -69,10 +69,10 @@ Reactive programming 一种技术 各自表述</description>
     
     <item>
       <title>Spring单元测试中的依赖注入问题</title>
-      <link>https://liufenix.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/spring-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%97%B6%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</link>
+      <link>https://virtual-matrix.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/spring-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%97%B6%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</link>
       <pubDate>Wed, 10 May 2023 21:08:19 +0800</pubDate>
       
-      <guid>https://liufenix.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/spring-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%97%B6%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</guid>
+      <guid>https://virtual-matrix.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/spring-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%97%B6%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</guid>
       <description>场景 项目中涉及到调用第三方服务接口的逻辑，而且会有一些衍生项目，也需要调用相同的接口，所以，提出了一个公共包，将调用逻辑封装到公共包中。但是调用接口逻辑中使用了Spring提供的一些模版工具，例如RedisTemplate，RestTemplate。在公共包中实现单元测试时，通过依赖注入的模版工具属性会报空指针异常等一系列问题。
 问题一 使用原生junit test测试，由于没用启动动spring容器，如果类中有通过spring 依赖注入的属性，会报空指针。
 解决方案 在测试类上增加***@SpringBootTest***，***@RunWith(SpringJUnit4ClassRunner.class)***注解
@@ -87,10 +87,10 @@ java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you 
     
     <item>
       <title>Arthas 简单使用</title>
-      <link>https://liufenix.github.io/posts/arthas/arthas%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</link>
+      <link>https://virtual-matrix.github.io/posts/arthas/arthas%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</link>
       <pubDate>Tue, 09 May 2023 19:44:17 +0800</pubDate>
       
-      <guid>https://liufenix.github.io/posts/arthas/arthas%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</guid>
+      <guid>https://virtual-matrix.github.io/posts/arthas/arthas%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</guid>
       <description>什么是Arthas Arthas是阿里巴巴开源的一款线上监控诊断产品，能够实时查看应用加载、内存、垃圾收集、线程等信息。可以在不修改代码的情况下，对线上应用进行诊断监控，大大提升异常排查效率。
 启动arthas 在命令行下面执行（使用和目标进程一致的用户启动，否则可能 attach 失败）：
 curl -O https://arthas.aliyun.com/arthas-boot.jar java -jar arthas-boot.jar 查看dashboard 输入dashboard，按回车/enter，会展示当前进程的信息，如 HTTP 请求的 qps, rt, 错误数, 线程池信息等等。按ctrl+c可以中断执行。
@@ -100,10 +100,10 @@ $ watch demo.MathGame primeFactors returnObj Press Ctrl+C to abort. Affect(class
     
     <item>
       <title>docker-compose 部署 es集群</title>
-      <link>https://liufenix.github.io/posts/docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</link>
+      <link>https://virtual-matrix.github.io/posts/docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Tue, 08 Dec 2020 13:41:06 +0800</pubDate>
       
-      <guid>https://liufenix.github.io/posts/docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</guid>
+      <guid>https://virtual-matrix.github.io/posts/docker/docker-compose%E9%83%A8%E7%BD%B2es%E9%9B%86%E7%BE%A4/</guid>
       <description>docker-compose.yml 文件
 version: &amp;#39;3.7&amp;#39; services: es01: image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1 container_name: es01 environment: - node.name=es01 - cluster.name=es-docker-cluster - discovery.seed_hosts=es02,es03 - cluster.initial_master_nodes=es01,es02,es03 - bootstrap.memory_lock=true - &amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34; ulimits: memlock: soft: -1 hard: -1 volumes: - /Users/keith/devtools/docker/es-docker/data01/data:/usr/share/elasticsearch/data - /Users/keith/devtools/docker/es-docker/data01/logs:/usr/share/elasticsearch/logs ports: - 9200:9200 networks: - elastic es02: image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1 container_name: es02 environment: - node.name=es02 - cluster.name=es-docker-cluster - discovery.seed_hosts=es01,es03 - cluster.initial_master_nodes=es01,es02,es03 - bootstrap.memory_lock=true - &amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34; ulimits: memlock: soft: -1 hard: -1 volumes: - /Users/keith/devtools/docker/es-docker/data02/data:/usr/share/elasticsearch/data - /Users/keith/devtools/docker/es-docker/data02/logs:/usr/share/elasticsearch/logs networks: - elastic es03: image: docker.</description>
     </item>
