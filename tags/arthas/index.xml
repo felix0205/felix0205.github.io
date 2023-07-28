@@ -13,11 +13,7 @@
       <pubDate>Tue, 09 May 2023 19:44:17 +0800</pubDate>
       
       <guid>https://virtual-matrix.github.io/posts/arthas/arthas%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</guid>
-      <description>什么是Arthas Arthas是阿里巴巴开源的一款线上监控诊断产品，能够实时查看应用加载、内存、垃圾收集、线程等信息。可以在不修改代码的情况下，对线上应用进行诊断监控，大大提升异常排查效率。
-启动arthas 在命令行下面执行（使用和目标进程一致的用户启动，否则可能 attach 失败）：
-curl -O https://arthas.aliyun.com/arthas-boot.jar java -jar arthas-boot.jar 查看dashboard 输入dashboard，按回车/enter，会展示当前进程的信息，如 HTTP 请求的 qps, rt, 错误数, 线程池信息等等。按ctrl+c可以中断执行。
-watch 通过watch命令来查看demo.MathGame#primeFactors函数的返回值：
-$ watch demo.MathGame primeFactors returnObj Press Ctrl+C to abort. Affect(class-cnt:1 , method-cnt:1) cost in 107 ms. ts=2018-11-28 19:22:30; [cost=1.715367ms] result=null ts=2018-11-28 19:22:31; [cost=0.185203ms] result=null ts=2018-11-28 19:22:32; [cost=19.012416ms] result=@ArrayList[ @Integer[5], @Integer[47], @Integer[2675531], ] ts=2018-11-28 19:22:33; [cost=0.311395ms] result=@ArrayList[ @Integer[2], @Integer[5], @Integer[317], @Integer[503], @Integer[887], ] ts=2018-11-28 19:22:34; [cost=10.136007ms] result=@ArrayList[ @Integer[2], @Integer[2], @Integer[3], @Integer[3], @Integer[31], @Integer[717593], ] ts=2018-11-28 19:22:35; [cost=29.</description>
+      <description>什么是Arthas Arthas是阿里巴巴开源的一款线上监控诊断产品，能够实时查看应用加载、内存、垃圾收集、线程等信息。可以在不修改代码的情况</description>
     </item>
     
   </channel>
