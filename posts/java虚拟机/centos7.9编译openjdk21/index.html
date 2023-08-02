@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Centos7.9编译openjdk21 // Matrix</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.114.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Fenix" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.ea1944125c761e4e86efd7d46670cf0434305c38798a5f2c2f6a4231e1d8eb92.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Centos7.9编译openjdk21"/>
+<meta name="twitter:description" content="“想要窥探Java虚拟机内部的实现原理，最直接的一条路径就是编译一套自己的JDK，通过阅读和 跟踪调试JDK源码来了解Java技术体系的运作，"/>
+
+    <meta property="og:title" content="Centos7.9编译openjdk21" />
+<meta property="og:description" content="“想要窥探Java虚拟机内部的实现原理，最直接的一条路径就是编译一套自己的JDK，通过阅读和 跟踪调试JDK源码来了解Java技术体系的运作，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/centos7.9%E7%BC%96%E8%AF%91openjdk21/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-02T13:41:06+08:00" />
+<meta property="article:modified_time" content="2023-08-02T13:41:06+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://virtual-matrix.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="Fenix" /></a>
+      <span class="app-header-title">Fenix</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/categories/">分类</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">标签</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">关于</a>
+      </nav>
+      <p>Simplicity is the ultimate form of sophistication.</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/virtual-matrix" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-book-open">
+  <title>book-open</title>
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+          </a>
+        
+          <a href="" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-coffee">
+  <title>coffee</title>
+  <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Centos7.9编译openjdk21</h1>
+      <div class="post-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Aug 2, 2023
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://virtual-matrix.github.io/tags/java/">Java</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>“想要窥探Java虚拟机内部的实现原理，最直接的一条路径就是编译一套自己的JDK，通过阅读和
+跟踪调试JDK源码来了解Java技术体系的运作，虽然这样门槛会比阅读资料更高一点，但肯定也会比
+阅读各种文章、书籍来得更加贴近本质。此外，Java类库里的很多底层方法都是Native的，在了解这些
+方法的运作过程，或对JDK进行Hack（根据需要进行定制微调）的时候，都需要有能自行编译、调试
+虚拟机代码的能力。
+现在网络上有不少开源的JDK实现可以供我们选择，但毫无疑问OpenJDK是使用得最广泛的
+JDK，我们也将选择OpenJDK来进行这次编译实战。”</p>
+<ol>
+<li>获取OpenJdk
+OpenJdk代码托管在github，github地址：https://github.com/openjdk/jdk，将源码克隆到本地：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/openjdk/jdk.git
+</span></span></code></pre></div><p>构建过程可以参考 doc/building.html 或 doc/building.md (建议详细阅读)
+2. 获取jdk-20
+由于OpenJdk中有大量的Java源文件，所以需要jdk环境对这部分代码进行编译，如果要编译jdk-21，则需要当前环境安装了jdk-21或jdk-20，并设置JAVA_HOME 和PATH。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mv jdk-20.tar.gz /usr/local
+</span></span><span style="display:flex;"><span>cd /usr/local
+</span></span><span style="display:flex;"><span>tar -zxf jdk-20.tar.gz
+</span></span><span style="display:flex;"><span>export JAVA_HOME<span style="color:#f92672">=</span>/usr/local/jdk-20
+</span></span><span style="display:flex;"><span>export PATN<span style="color:#f92672">=</span>$PATH:$JAVA_HOME/bin
+</span></span></code></pre></div><ol start="3">
+<li>安装相关依赖
+编译jdk时需要提前安装相关的依赖，例如 gcc 等，不确定需要安装哪些，可以先通过如下命令进行检查，会在检查结果中提示需要安装的依赖：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>bash configure
+</span></span></code></pre></div><p>如果gcc版本过低，参考这个文章进行升级https://zhuanlan.zhihu.com/p/535657060
+4. 进行编译</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make images
+</span></span></code></pre></div><ol start="5">
+<li>校验编译结果</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./build/*/images/jdk/bin/java -version
+</span></span></code></pre></div><p>上述步骤是编译结果默认是release版本，如果需要调试或自定义，可设置相应的debug参数。这些参数可以使用“bash configure&ndash;help”命令查询到，其中最有用的参数如下：</p>
+<ul>
+<li>&ndash;with-debug-level=<!-- raw HTML omitted -->：设置编译的级别，可选值为release、fastdebug、slowde-bug，越往后进行的优化措施就越少，带的调试信息就越多。还有一些虚拟机调试参数必须在特定模式下才可以使用。默认值为release。</li>
+<li>&ndash;enable-debug：等效于&ndash;with-debug-level=fastdebug。</li>
+<li>&ndash;with-native-debug-symbols=<!-- raw HTML omitted -->：确定调试符号信息的编译方式，可选值为none、internal、external、zipped。</li>
+<li>&ndash;with-version-string=<!-- raw HTML omitted -->：设置编译JDK的版本号，譬如java-version的输出就会显示该信息。这个参数还有&ndash;with-version-<!-- raw HTML omitted -->=<!-- raw HTML omitted -->的形式，其中part可以是pre、opt、build、major、minor、security、patch之一，用于设置版本号的某一个部分。</li>
+<li>&ndash;with-jvm-variants=<!-- raw HTML omitted -->[，<!-- raw HTML omitted -->&hellip;]：编译特定模式（Variants）的HotSpot虚拟机，可以多个模式并存，可选值为server、client、minimal、core、zero、custom。</li>
+<li>&ndash;with-jvm-features=<!-- raw HTML omitted -->[，<!-- raw HTML omitted -->&hellip;]：针对&ndash;with-jvm-variants=custom时的自定义虚拟机特性列表（Features），可以多个特性并存，由于可选值较多，请参见help命令输出。</li>
+<li>&ndash;with-target-bits=<!-- raw HTML omitted -->：指明要编译32位还是64位的Java虚拟机，在64位机器上也可以通过交叉编译生成32位的虚拟机。</li>
+<li>&ndash;with-<!-- raw HTML omitted -->=<!-- raw HTML omitted -->：用于指明依赖包的具体路径，通常使用在安装了多个不同版本的BootstrapJDK和依赖包的情况[…]</li>
+<li>&ndash;with-extra-<!-- raw HTML omitted -->=<!-- raw HTML omitted -->：用于设定C、C++和Java代码编译时的额外编译器参数，其中flagtype可选值为cflags、cxxflags、ldflags，分别代表C、C++和Java代码的参数。</li>
+<li>&ndash;with-conf-name=<!-- raw HTML omitted -->：指定编译配置名称，OpenJDK支持使用不同的配置进行编译，默认会根据编译的操作系统、指令集架构、调试级别自动生成一个配置名称，譬如“linux-x86_64-server-release”，如果在这些信息都相同的情况下保存不同的编译参数配置，就需要使用这个参数来自定义配置名称。
+以上是configure命令的部分参数，其他未介绍到的可以使用“bash configure&ndash;help”来查看，所有参数均通过以下形式使用：
+bash configure [options]
+譬如，编译FastDebug版、仅含Server模式的HotSpot虚拟机，命令应为：
+bash configure &ndash;enable-debug &ndash;with-jvm-variants=server”</li>
+</ul>
+<p>如果一切顺利的话，就会收到配置成功的提示，并且输出调试级别，Java虚拟机的模式、特性，使用的编译器版本等配置摘要信息等</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
