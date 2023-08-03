@@ -118,9 +118,7 @@ OpenJdk代码托管在github，github地址：https://github.com/openjdk/jdk，�
 编译jdk时需要提前安装相关的依赖，例如 gcc 等，不确定需要安装哪些，可以先通过如下命令进行检查，会在检查结果中提示需要安装的依赖：</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>bash configure
-</span></span></code></pre></div><p>如果gcc版本过低，参考这个文章进行升级https://zhuanlan.zhihu.com/p/535657060。
-bash configure 通过后会显示如下结果
-<img src="https://note-obj.oss-cn-beijing.aliyuncs.com/img/20230803090930.png" alt="image.png"></p>
+</span></span></code></pre></div><p>如果gcc版本过低，参考这个文章进行升级https://zhuanlan.zhihu.com/p/535657060。</p>
 <ol start="4">
 <li>进行编译</li>
 </ol>
@@ -147,7 +145,8 @@ bash configure [options]
 譬如，编译FastDebug版、仅含Server模式的HotSpot虚拟机，命令应为：
 bash configure &ndash;enable-debug &ndash;with-jvm-variants=server”</li>
 </ul>
-<p>如果一切顺利的话，就会收到配置成功的提示，并且输出调试级别，Java虚拟机的模式、特性，使用的编译器版本等配置摘要信息等</p>
+<p>如果一切顺利的话，就会收到配置成功的提示，并且输出调试级别，Java虚拟机的模式、特性，使用的编译器版本等配置摘要信息等，如下图：
+<img src="https://note-obj.oss-cn-beijing.aliyuncs.com/img/20230803090930.png" alt="image.png"></p>
 
     </div>
     <div class="post-footer">
