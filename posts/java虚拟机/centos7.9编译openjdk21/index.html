@@ -118,14 +118,17 @@ OpenJdk代码托管在github，github地址：https://github.com/openjdk/jdk，�
 编译jdk时需要提前安装相关的依赖，例如 gcc 等，不确定需要安装哪些，可以先通过如下命令进行检查，会在检查结果中提示需要安装的依赖：</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>bash configure
-</span></span></code></pre></div><p>如果gcc版本过低，参考这个文章进行升级https://zhuanlan.zhihu.com/p/535657060
-4. 进行编译</p>
+</span></span></code></pre></div><p>如果gcc版本过低，参考这个文章进行升级https://zhuanlan.zhihu.com/p/535657060。</p>
+<ol start="4">
+<li>进行编译</li>
+</ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>make images
 </span></span></code></pre></div><ol start="5">
 <li>校验编译结果</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./build/*/images/jdk/bin/java -version
-</span></span></code></pre></div><p>上述步骤是编译结果默认是release版本，如果需要调试或自定义，可设置相应的debug参数。这些参数可以使用“bash configure&ndash;help”命令查询到，其中最有用的参数如下：</p>
+</span></span></code></pre></div><p><img src="https://note-obj.oss-cn-beijing.aliyuncs.com/img/20230803091120.png" alt="image.png"></p>
+<p>上述步骤是编译结果默认是release版本，如果需要调试或自定义，可设置相应的debug参数。这些参数可以使用“bash configure&ndash;help”命令查询到，其中最有用的参数如下：</p>
 <ul>
 <li>&ndash;with-debug-level=<!-- raw HTML omitted -->：设置编译的级别，可选值为release、fastdebug、slowde-bug，越往后进行的优化措施就越少，带的调试信息就越多。还有一些虚拟机调试参数必须在特定模式下才可以使用。默认值为release。</li>
 <li>&ndash;enable-debug：等效于&ndash;with-debug-level=fastdebug。</li>
@@ -142,7 +145,8 @@ bash configure [options]
 譬如，编译FastDebug版、仅含Server模式的HotSpot虚拟机，命令应为：
 bash configure &ndash;enable-debug &ndash;with-jvm-variants=server”</li>
 </ul>
-<p>如果一切顺利的话，就会收到配置成功的提示，并且输出调试级别，Java虚拟机的模式、特性，使用的编译器版本等配置摘要信息等</p>
+<p>如果一切顺利的话，就会收到配置成功的提示，并且输出调试级别，Java虚拟机的模式、特性，使用的编译器版本等配置摘要信息等，如下图：
+<img src="https://note-obj.oss-cn-beijing.aliyuncs.com/img/20230803090930.png" alt="image.png"></p>
 
     </div>
     <div class="post-footer">

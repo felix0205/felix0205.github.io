@@ -26,6 +26,24 @@
     </item>
     
     <item>
+      <title>Java垃圾回收#1:哪些对象需要被回收</title>
+      <link>https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/1%E5%93%AA%E4%BA%9B%E5%AF%B9%E8%B1%A1%E8%A2%AB%E5%9B%9E%E6%94%B6/</link>
+      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/1%E5%93%AA%E4%BA%9B%E5%AF%B9%E8%B1%A1%E8%A2%AB%E5%9B%9E%E6%94%B6/</guid>
+      <description>哪些对象需要被回收？ 在堆里面存放着Java世界中几乎所有的对象实例，垃圾收集器在对堆进行回收前，第一件事情就是要确定这些对象之中哪些还“存活</description>
+    </item>
+    
+    <item>
+      <title>Java垃圾回收#2:垃圾收集算法</title>
+      <link>https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/2%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/2%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</guid>
+      <description>分代收集理论 当前商业虚拟机的垃圾收集器，大多数都遵循了“分代收集”（Generational Collection）的理论进行设计，分代收集名</description>
+    </item>
+    
+    <item>
       <title>Spring单元测试中的依赖注入问题</title>
       <link>https://virtual-matrix.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/spring-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%97%B6%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</link>
       <pubDate>Wed, 10 May 2023 21:08:19 +0800</pubDate>
