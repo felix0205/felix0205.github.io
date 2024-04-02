@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java虚拟机 on Matrix</title>
-    <link>https://virtual-matrix.github.io/categories/java%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
+    <link>https://io-matrix.github.io/categories/java%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
     <description>Recent content in Java虚拟机 on Matrix</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Aug 2023 13:41:06 +0800</lastBuildDate><atom:link href="https://virtual-matrix.github.io/categories/java%E8%99%9A%E6%8B%9F%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Aug 2023 13:41:06 +0800</lastBuildDate><atom:link href="https://io-matrix.github.io/categories/java%E8%99%9A%E6%8B%9F%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Centos7.9编译openjdk21</title>
-      <link>https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/centos7.9%E7%BC%96%E8%AF%91openjdk21/</link>
+      <link>https://io-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/centos7.9%E7%BC%96%E8%AF%91openjdk21/</link>
       <pubDate>Wed, 02 Aug 2023 13:41:06 +0800</pubDate>
       
-      <guid>https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/centos7.9%E7%BC%96%E8%AF%91openjdk21/</guid>
+      <guid>https://io-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/centos7.9%E7%BC%96%E8%AF%91openjdk21/</guid>
       <description>“想要窥探Java虚拟机内部的实现原理，最直接的一条路径就是编译一套自己的JDK，通过阅读和 跟踪调试JDK源码来了解Java技术体系的运作，虽然这样门槛会</description>
     </item>
     
     <item>
       <title>Java垃圾回收#1:哪些对象需要被回收</title>
-      <link>https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/1%E5%93%AA%E4%BA%9B%E5%AF%B9%E8%B1%A1%E8%A2%AB%E5%9B%9E%E6%94%B6/</link>
+      <link>https://io-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/1%E5%93%AA%E4%BA%9B%E5%AF%B9%E8%B1%A1%E8%A2%AB%E5%9B%9E%E6%94%B6/</link>
       <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/1%E5%93%AA%E4%BA%9B%E5%AF%B9%E8%B1%A1%E8%A2%AB%E5%9B%9E%E6%94%B6/</guid>
+      <guid>https://io-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/1%E5%93%AA%E4%BA%9B%E5%AF%B9%E8%B1%A1%E8%A2%AB%E5%9B%9E%E6%94%B6/</guid>
       <description>哪些对象需要被回收？ 在堆里面存放着Java世界中几乎所有的对象实例，垃圾收集器在对堆进行回收前，第一件事情就是要确定这些对象之中哪些还“存活”着，哪些已经</description>
     </item>
     
     <item>
       <title>Java垃圾回收#2:垃圾收集算法</title>
-      <link>https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/2%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</link>
+      <link>https://io-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/2%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</link>
       <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://virtual-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/2%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://io-matrix.github.io/posts/java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/2%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</guid>
       <description>分代收集理论 当前商业虚拟机的垃圾收集器，大多数都遵循了“分代收集”（Generational Collection）的理论进行设计，分代收集名为理论，实质是</description>
     </item>
     
