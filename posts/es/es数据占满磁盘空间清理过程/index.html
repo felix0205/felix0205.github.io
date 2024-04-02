@@ -115,7 +115,7 @@
 <li>参考链接：[<a href="https://cloud.tencent.com/developer/article/1862593">Elasticsearch - cluster_block_exception [FORBIDDEN/12/index read-only / allow delete (api)]-腾讯云开发者社区-腾讯云 (tencent.com)</a>]()</li>
 <li>解决方案：手动将索引的只读属性去掉
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 设置所有索引</span>
-</span></span><span style="display:flex;"><span>	curl  -u elastic:EHL@111111  -X PUT <span style="color:#e6db74">&#34;http://127.0.0.1:9200/_all/_settings?master_timeout=5m&#34;</span> -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{ &#34;index.blocks.read_only_allow_delete&#34;: null}&#39;</span>
+</span></span><span style="display:flex;"><span>curl  -u elastic:EHL@111111  -X PUT <span style="color:#e6db74">&#34;http://127.0.0.1:9200/_all/_settings?master_timeout=5m&#34;</span> -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{ &#34;index.blocks.read_only_allow_delete&#34;: null}&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置单个索引</span>
 </span></span><span style="display:flex;"><span>curl  -u elastic:EHL@111111  -X PUT <span style="color:#e6db74">&#34;http://127.0.0.1:9200/metricbeat-7.15.1-2024.02.17/_settings?master_timeout=5m&#34;</span> -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{ &#34;index.blocks.read_only_allow_delete&#34;: null}&#39;</span>
 </span></span></code></pre></div></li>
