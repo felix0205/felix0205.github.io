@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>es数据占满磁盘空间清理过程 // Matrix</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.114.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Fenix" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.ea1944125c761e4e86efd7d46670cf0434305c38798a5f2c2f6a4231e1d8eb92.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="es数据占满磁盘空间清理过程"/>
+<meta name="twitter:description" content="背景 在一个项目中，通过metricbeat采集系统指标到es，在es中会按天建索引，由于在项目页面上只会显示近几个小时的监控数据，所以历史的数据会使用定时"/>
+
+    <meta property="og:title" content="es数据占满磁盘空间清理过程" />
+<meta property="og:description" content="背景 在一个项目中，通过metricbeat采集系统指标到es，在es中会按天建索引，由于在项目页面上只会显示近几个小时的监控数据，所以历史的数据会使用定时" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://liufenix.github.io/posts/es/es%E6%95%B0%E6%8D%AE%E5%8D%A0%E6%BB%A1%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86%E8%BF%87%E7%A8%8B/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-04-02T00:00:00+00:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://liufenix.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="Fenix" /></a>
+      <span class="app-header-title">Fenix</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/categories/">分类</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">标签</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/about/">关于</a>
+      </nav>
+      <p>Simplicity is the ultimate form of sophistication.</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/liufenix" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-book-open">
+  <title>book-open</title>
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+          </a>
+        
+          <a href="" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-coffee">
+  <title>coffee</title>
+  <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">es数据占满磁盘空间清理过程</h1>
+      <div class="post-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 2, 2024
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://liufenix.github.io/tags/elasticsearch/">elasticsearch</a>
+              <a class="tag" href="https://liufenix.github.io/tags/java/">Java</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="背景">背景</h3>
+<p>在一个项目中，通过metricbeat采集系统指标到es，在es中会按天建索引，由于在项目页面上只会显示近几个小时的监控数据，所以历史的数据会使用定时任务清理掉。由于出问题的环境前期没有配置定时任务，导致数据一直保存，最终占满了系统盘，触发报警，需要手动处理。</p>
+<h3 id="解决过程">解决过程</h3>
+<ol>
+<li>增加es_delete.sh脚本，删除前一天的索引，执行脚本
+<ol>
+<li>报错：没有响应</li>
+<li>查看es日志，一直在gc，cpu占用很高</li>
+<li>看了下配置，配置文件中设置了discovery.zen.ping.unicast.hosts参数，并且设置了访问不通的两个节点，由于这是个单节点的es，所以将这个参数去掉了</li>
+<li>增加es内存配置，重启服务</li>
+</ol>
+</li>
+<li>再次执行删除脚本时，还是报错
+<ol>
+<li>报错：cluster_block_exception [FORBIDDEN/12/index read-only / allow delete (api)]</li>
+<li>原因：es判断系统磁盘可用空间不足 95% 时，会自动设置所有索引为只读状态，如下警告日志：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">[</span>2024-04-02T07:20:05,650<span style="color:#f92672">][</span>WARN <span style="color:#f92672">][</span>o.e.c.r.a.DiskThresholdMonitor<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>es-master-1<span style="color:#f92672">]</span> flood stage disk watermark <span style="color:#f92672">[</span>95%<span style="color:#f92672">]</span> exceeded on <span style="color:#f92672">[</span>GR0OFZ8sQg-TCKZfTm39Sg<span style="color:#f92672">][</span>es-master-1<span style="color:#f92672">][</span>/usr/share/elasticsearch/data/nodes/0<span style="color:#f92672">]</span> free: 11.9gb<span style="color:#f92672">[</span>2.6%<span style="color:#f92672">]</span>, all indices on this node will be marked read-only
+</span></span></code></pre></div></li>
+<li>参考链接：[<a href="https://cloud.tencent.com/developer/article/1862593">Elasticsearch - cluster_block_exception [FORBIDDEN/12/index read-only / allow delete (api)]-腾讯云开发者社区-腾讯云 (tencent.com)</a>]()</li>
+<li>解决方案：手动将索引的只读属性去掉
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 设置所有索引</span>
+</span></span><span style="display:flex;"><span>curl  -u elastic:EHL@111111  -X PUT <span style="color:#e6db74">&#34;http://127.0.0.1:9200/_all/_settings?master_timeout=5m&#34;</span> -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{ &#34;index.blocks.read_only_allow_delete&#34;: null}&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置单个索引</span>
+</span></span><span style="display:flex;"><span>curl  -u elastic:EHL@111111  -X PUT <span style="color:#e6db74">&#34;http://127.0.0.1:9200/metricbeat-7.15.1-2024.02.17/_settings?master_timeout=5m&#34;</span> -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{ &#34;index.blocks.read_only_allow_delete&#34;: null}&#39;</span>
+</span></span></code></pre></div></li>
+</ol>
+</li>
+<li>版本冲突
+执行删除时遇到版本冲突，报409
+参考链接<a href="">https://blog.csdn.net/qq_41878532/article/details/109533239</a></li>
+</ol>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

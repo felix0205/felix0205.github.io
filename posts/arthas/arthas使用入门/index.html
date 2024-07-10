@@ -8,23 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Fenix" />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="/css/main.min.8ae3455dda470f9d466783c1cd47ae1ae901d90b7ddac047c88b77e6b428c2e5.css" />
+    <link rel="stylesheet" href="/css/main.min.ea1944125c761e4e86efd7d46670cf0434305c38798a5f2c2f6a4231e1d8eb92.css" />
 
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Arthas 简单使用"/>
-<meta name="twitter:description" content="什么是Arthas Arthas是阿里巴巴开源的一款线上监控诊断产品，能够实时查看应用加载、内存、垃圾收集、线程等信息。可以在不修改代码的情况下，对线上应用进行诊断监控，大大提升异常排查效率。
-启动arthas 在命令行下面执行（使用和目标进程一致的用户启动，否则可能 attach 失败）：
-curl -O https://arthas.aliyun.com/arthas-boot.jar java -jar arthas-boot.jar 查看dashboard 输入dashboard，按回车/enter，会展示当前进程的信息，如 HTTP 请求的 qps, rt, 错误数, 线程池信息等等。按ctrl&#43;c可以中断执行。
-watch 通过watch命令来查看demo.MathGame#primeFactors函数的返回值：
-$ watch demo.MathGame primeFactors returnObj Press Ctrl&#43;C to abort. Affect(class-cnt:1 , method-cnt:1) cost in 107 ms. ts=2018-11-28 19:22:30; [cost=1.715367ms] result=null ts=2018-11-28 19:22:31; [cost=0.185203ms] result=null ts=2018-11-28 19:22:32; [cost=19.012416ms] result=@ArrayList[ @Integer[5], @Integer[47], @Integer[2675531], ] ts=2018-11-28 19:22:33; [cost=0.311395ms] result=@ArrayList[ @Integer[2], @Integer[5], @Integer[317], @Integer[503], @Integer[887], ] ts=2018-11-28 19:22:34; [cost=10.136007ms] result=@ArrayList[ @Integer[2], @Integer[2], @Integer[3], @Integer[3], @Integer[31], @Integer[717593], ] ts=2018-11-28 19:22:35; [cost=29."/>
+<meta name="twitter:description" content="什么是Arthas Arthas是阿里巴巴开源的一款线上监控诊断产品，能够实时查看应用加载、内存、垃圾收集、线程等信息。可以在不修改代码的情况下，对线上应用"/>
 
     <meta property="og:title" content="Arthas 简单使用" />
-<meta property="og:description" content="什么是Arthas Arthas是阿里巴巴开源的一款线上监控诊断产品，能够实时查看应用加载、内存、垃圾收集、线程等信息。可以在不修改代码的情况下，对线上应用进行诊断监控，大大提升异常排查效率。
-启动arthas 在命令行下面执行（使用和目标进程一致的用户启动，否则可能 attach 失败）：
-curl -O https://arthas.aliyun.com/arthas-boot.jar java -jar arthas-boot.jar 查看dashboard 输入dashboard，按回车/enter，会展示当前进程的信息，如 HTTP 请求的 qps, rt, 错误数, 线程池信息等等。按ctrl&#43;c可以中断执行。
-watch 通过watch命令来查看demo.MathGame#primeFactors函数的返回值：
-$ watch demo.MathGame primeFactors returnObj Press Ctrl&#43;C to abort. Affect(class-cnt:1 , method-cnt:1) cost in 107 ms. ts=2018-11-28 19:22:30; [cost=1.715367ms] result=null ts=2018-11-28 19:22:31; [cost=0.185203ms] result=null ts=2018-11-28 19:22:32; [cost=19.012416ms] result=@ArrayList[ @Integer[5], @Integer[47], @Integer[2675531], ] ts=2018-11-28 19:22:33; [cost=0.311395ms] result=@ArrayList[ @Integer[2], @Integer[5], @Integer[317], @Integer[503], @Integer[887], ] ts=2018-11-28 19:22:34; [cost=10.136007ms] result=@ArrayList[ @Integer[2], @Integer[2], @Integer[3], @Integer[3], @Integer[31], @Integer[717593], ] ts=2018-11-28 19:22:35; [cost=29." />
+<meta property="og:description" content="什么是Arthas Arthas是阿里巴巴开源的一款线上监控诊断产品，能够实时查看应用加载、内存、垃圾收集、线程等信息。可以在不修改代码的情况下，对线上应用" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://liufenix.github.io/posts/arthas/arthas%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-05-09T19:44:17+08:00" />
@@ -35,7 +27,7 @@ $ watch demo.MathGame primeFactors returnObj Press Ctrl&#43;C to abort. Affect(c
   <body>
     <header class="app-header">
       <a href="https://liufenix.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="Fenix" /></a>
-      <span class="app-header-title">Matrix</span>
+      <span class="app-header-title">Fenix</span>
       <nav class="app-header-menu">
           <a class="app-header-menu-item" href="/categories/">分类</a>
              - 
@@ -89,7 +81,7 @@ $ watch demo.MathGame primeFactors returnObj Press Ctrl&#43;C to abort. Affect(c
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          1 min read
+          2 min read
         </div>
         <div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
